@@ -1,6 +1,7 @@
 const express=require('express')
 const mongoose=require('mongoose')
 const app=express()
+const path = require('path');
 const {signup,login}=require('./Util/auth')
 const protect=require('./Util/privateRoute')
 const home=require('./Util/home')
@@ -22,7 +23,8 @@ const mongooseConnect=async()=>{
 mongooseConnect()
 app.use(express.json())
 app.get("/",(req,res)=>{
-res.send("Hello")
+res.sendFile(path.join(__dirname, '/index.html'));
+
 })
 app.get("/home",protect,home)
 app.post("/signup",signup)
