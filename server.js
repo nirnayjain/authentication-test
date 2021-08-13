@@ -21,6 +21,9 @@ const mongooseConnect=async()=>{
 }
 mongooseConnect()
 app.use(express.json())
+app.get("/",(req,res)=>{
+res.send("Hello")
+})
 app.get("/home",protect,home)
 app.post("/signup",signup)
 app.post("/login",login)
